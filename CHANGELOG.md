@@ -9,6 +9,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- ✨ **TmlWaterfall** 瀑布流布局组件
+  - 支持固定列数和自适应列数两种模式
+  - 自动监听子元素尺寸变化和增删
+  - 支持响应式布局，自动调整列数
+  - 支持滚动到底部事件（实现无限滚动）
+  - 高性能布局算法（使用 transform 定位）
+  - 支持自定义列间距、最小/最大项宽度
+  - 完整的 TypeScript 类型支持
+  - 详细的组件文档和使用示例
 - 🎨 集成 Tailwind CSS v3.4
   - 添加 `tailwindcss`, `postcss`, `autoprefixer` 依赖
   - 创建 `tailwind.config.js` 配置文件，映射 CSS 变量到 Tailwind 主题
