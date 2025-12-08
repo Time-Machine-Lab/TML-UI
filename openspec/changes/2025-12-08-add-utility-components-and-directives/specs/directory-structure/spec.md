@@ -1,12 +1,44 @@
 # 规格：目录结构调整
 
 **版本**: 1.0  
-**状态**: 草案  
+**状态**: 已完成  
 **创建日期**: 2025-12-08
 
 ## 概述
 
 为 TmlUI 项目创建基础目录结构，以支持未来添加工具组件、表单系统和自定义指令。本规格仅涉及目录的创建和占位文件，不包括具体组件的实现。
+
+## ADDED
+
+### 新增源码目录结构
+
+新增以下目录和文件：
+
+- `src/form/` - 表单系统目录
+  - `src/form/.gitkeep` - 占位文件
+- `src/directives/` - 自定义指令目录
+  - `src/directives/index.ts` - 指令注册入口（空实现）
+- `src/composables/` - 可组合函数目录
+  - `src/composables/index.ts` - Composables 导出入口（空实现）
+- `src/utils/` - 工具函数目录
+  - `src/utils/index.ts` - 工具函数导出入口（空实现）
+
+### 新增测试目录结构
+
+新增以下测试目录和占位文件：
+
+- `tests/form/` - 表单测试目录
+  - `tests/form/.gitkeep` - 占位文件
+- `tests/directives/` - 指令测试目录
+  - `tests/directives/.gitkeep` - 占位文件
+- `tests/composables/` - Composables 测试目录
+  - `tests/composables/.gitkeep` - 占位文件
+- `tests/utils/` - 工具函数测试目录
+  - `tests/utils/.gitkeep` - 占位文件
+
+### 文档更新
+
+- 在 `README.md` 中新增"项目结构"章节，说明各目录用途和命名规范
 
 ## 新增目录结构
 
