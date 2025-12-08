@@ -7,6 +7,62 @@
 
     <main class="main-content">
       <section class="demo-section">
+        <h2>Grid 栅格布局演示</h2>
+
+        <div class="demo-group">
+          <h3>基础栅格</h3>
+          <TmlRow>
+            <TmlCol :span="24"><div class="grid-demo">col-24</div></TmlCol>
+          </TmlRow>
+          <TmlRow>
+            <TmlCol :span="12"><div class="grid-demo">col-12</div></TmlCol>
+            <TmlCol :span="12"><div class="grid-demo">col-12</div></TmlCol>
+          </TmlRow>
+          <TmlRow>
+            <TmlCol :span="8"><div class="grid-demo">col-8</div></TmlCol>
+            <TmlCol :span="8"><div class="grid-demo">col-8</div></TmlCol>
+            <TmlCol :span="8"><div class="grid-demo">col-8</div></TmlCol>
+          </TmlRow>
+        </div>
+
+        <div class="demo-group">
+          <h3>栅格间距</h3>
+          <TmlRow :gutter="16">
+            <TmlCol :span="6"><div class="grid-demo">col-6</div></TmlCol>
+            <TmlCol :span="6"><div class="grid-demo">col-6</div></TmlCol>
+            <TmlCol :span="6"><div class="grid-demo">col-6</div></TmlCol>
+            <TmlCol :span="6"><div class="grid-demo">col-6</div></TmlCol>
+          </TmlRow>
+        </div>
+
+        <div class="demo-group">
+          <h3>列偏移</h3>
+          <TmlRow>
+            <TmlCol :span="8"><div class="grid-demo">col-8</div></TmlCol>
+            <TmlCol :span="8" :offset="8"><div class="grid-demo">col-8 offset-8</div></TmlCol>
+          </TmlRow>
+        </div>
+
+        <div class="demo-group">
+          <h3>响应式布局</h3>
+          <TmlRow :gutter="16">
+            <TmlCol :span="24" :sm="12" :md="8" :lg="6">
+              <div class="grid-demo">响应式列</div>
+            </TmlCol>
+            <TmlCol :span="24" :sm="12" :md="8" :lg="6">
+              <div class="grid-demo">响应式列</div>
+            </TmlCol>
+            <TmlCol :span="24" :sm="12" :md="8" :lg="6">
+              <div class="grid-demo">响应式列</div>
+            </TmlCol>
+            <TmlCol :span="24" :sm="12" :md="8" :lg="6">
+              <div class="grid-demo">响应式列</div>
+            </TmlCol>
+          </TmlRow>
+        </div>
+      </section>
+
+      <section class="demo-section">
         <h2>Button 组件演示</h2>
 
         <div class="demo-group">
@@ -65,6 +121,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import TmlButton from './components/button/tml-button.vue'
+import { TmlRow, TmlCol } from './components/grid'
 
 const clickCount = ref(0)
 
@@ -148,5 +205,14 @@ const handleClick = () => {
   text-align: center;
   color: var(--tml-text-color-secondary);
   border-top: 1px solid var(--tml-border-color-light);
+}
+
+.grid-demo {
+  background: #0092ff;
+  color: white;
+  padding: 16px;
+  text-align: center;
+  border-radius: 4px;
+  margin-bottom: 8px;
 }
 </style>
