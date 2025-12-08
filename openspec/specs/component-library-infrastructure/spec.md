@@ -137,3 +137,102 @@ The project MUST use Vitepress to build component documentation and example prev
 **Then** 组件应该正常渲染  
 **And** 用户可以与组件交互
 
+### Requirement: 样式系统
+
+The component library MUST provide a flexible styling system that supports both Tailwind CSS utility classes and CSS variables for theme customization.
+
+**优先级:** P0  
+**类型:** 功能性
+
+#### Scenario: 使用 Tailwind utility 类构建组件
+
+**Given** 开发者创建新组件  
+**When** 使用 Tailwind utility 类（如 `px-4`, `py-2`, `bg-primary`）  
+**Then** 样式应该正确应用到组件  
+**And** 开发服务器支持热更新  
+**And** 构建产物包含必要的 Tailwind 样式
+
+#### Scenario: Tailwind 主题与 CSS 变量集成
+
+**Given** 项目配置了 CSS 变量主题  
+**When** 在 Tailwind 配置中引用 CSS 变量（如 `colors.primary: 'var(--tml-color-primary)'`）  
+**Then** Tailwind 类应该使用 CSS 变量的值  
+**And** 主题切换时 Tailwind 类的颜色应该相应变化
+
+#### Scenario: PurgeCSS 优化未使用样式
+
+**Given** 项目使用了部分 Tailwind 类  
+**When** 执行生产构建 `npm run build`  
+**Then** 未使用的 Tailwind 样式应该被自动移除  
+**And** 最终打包体积应该经过优化  
+**And** 只包含项目中实际使用的样式类
+
+#### Scenario: 开发者查阅样式系统文档
+
+**Given** 开发者需要了解如何编写组件样式  
+**When** 访问文档中的样式系统指南  
+**Then** 应该有清晰的 Tailwind 使用说明  
+**And** 应该包含 Tailwind 与 CSS 变量混合使用的示例  
+**And** 应该说明何时使用 Tailwind，何时使用自定义 CSS
+
+### Requirement: Tailwind CSS 配置
+
+The project MUST include Tailwind CSS configuration files to enable utility-first CSS development.
+
+**优先级:** P0  
+**类型:** 功能性
+
+#### Scenario: Tailwind 正确扫描项目文件
+
+**Given** 项目配置了 `tailwind.config.js`  
+**When** `content` 配置包含所有源文件路径（`src/**/*.{vue,js,ts,jsx,tsx}`, `docs/**/*.{md,vue}`）  
+**Then** Tailwind 应该正确检测所有使用的 utility 类  
+**And** 构建时包含所有需要的样式  
+**And** 开发时新增的类能立即生效
+
+#### Scenario: 自定义主题配置
+
+**Given** 开发者需要扩展 Tailwind 默认主题  
+**When** 在 `tailwind.config.js` 的 `theme.extend` 中添加自定义配置  
+**Then** 自定义的颜色、间距、圆角等应该可用  
+**And** 可以通过 Tailwind 类使用这些自定义值  
+**And** 自定义配置与 CSS 变量保持一致
+
+### Requirement: PostCSS 集成
+
+The project MUST use PostCSS to process Tailwind directives and auto-prefix CSS.
+
+**优先级:** P0  
+**类型:** 功能性
+
+#### Scenario: PostCSS 处理 Tailwind directives
+
+**Given** 样式文件包含 `@tailwind` directives  
+**When** Vite 构建或开发服务器启动  
+**Then** PostCSS 应该将 Tailwind directives 转换为实际 CSS  
+**And** Autoprefixer 应该添加必要的浏览器前缀  
+**And** 最终生成的 CSS 在目标浏览器中正常工作
+
+#### Scenario: PostCSS 配置正确加载
+
+**Given** 项目根目录有 `postcss.config.js`  
+**When** Vite 启动或构建  
+**Then** 应该自动加载 PostCSS 配置  
+**And** 应该按顺序执行 tailwindcss 和 autoprefixer 插件  
+**And** 不应该有配置加载错误
+
+### Requirement: 向后兼容性
+
+The Tailwind CSS integration MUST NOT break existing components using CSS variables and custom CSS.
+
+**优先级:** P0  
+**类型:** 非功能性
+
+#### Scenario: 现有组件样式不受影响
+
+**Given** 项目已有使用 CSS 变量和自定义 CSS 的组件  
+**When** 集成 Tailwind CSS 后重新构建  
+**Then** 现有组件的样式应该保持不变  
+**And** 所有单元测试应该继续通过  
+**And** 组件的外观和行为不应该改变
+

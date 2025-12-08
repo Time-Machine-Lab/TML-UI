@@ -71,7 +71,45 @@ const handleClick = () => {
 </script>
 ```
 
+## 样式系统
+
+TML UI 提供两种样式方案，你可以根据项目需求选择：
+
+### 1. Tailwind CSS（推荐）
+
+TML UI 集成了 Tailwind CSS，可以使用 utility-first 类快速构建界面：
+
+```vue
+<template>
+  <div class="flex gap-4 p-4">
+    <tml-button class="px-6 py-3 text-base">
+      自定义样式
+    </tml-button>
+    <div class="bg-primary text-white rounded-base p-4">
+      使用主题颜色
+    </div>
+  </div>
+</template>
+```
+
+查看 [Tailwind CSS 使用指南](/guide/tailwind) 了解更多。
+
+### 2. CSS 变量
+
+使用 CSS 变量进行主题定制：
+
+```css
+:root {
+  --tml-color-primary: #409eff;
+  --tml-color-success: #67c23a;
+  /* 更多变量... */
+}
+```
+
+两种方案可以混合使用，Tailwind 类会自动使用 CSS 变量的值。
+
 ## 下一步
 
 - 查看 [Button 组件](/components/button) 文档
+- 查看 [Tailwind CSS 使用指南](/guide/tailwind)
 - 探索更多组件
