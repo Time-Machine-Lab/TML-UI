@@ -1,5 +1,5 @@
 import Theme from 'vitepress/theme'
-import TmlUI from '../../src/index'
+import TmlUI from '../../../src/index'
 import './custom.css'
 
 export default {
