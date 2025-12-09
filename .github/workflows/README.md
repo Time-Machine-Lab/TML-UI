@@ -111,7 +111,19 @@ git push origin v1.0.0
 NPM_TOKEN = npm_xxxxxxxxxxxxxxxxxxxx
 ```
 
+
+如何获取 Verdaccio 的 `NPM_TOKEN`：
+1) 先指向私有源并登录
+```
+npm config set registry http://<host>:<port>/
 获取 NPM Token：
+npm adduser --registry http://<host>:<port>/
+```
+2) 登录成功后，查看本地 `~/.npmrc`，会有一行：
+```
+//<host>:<port>/:_authToken=eyJhbGciOi...
+```
+复制其中的 token 作为 `NPM_TOKEN`。如果看不到 token，可在 Verdaccio Web UI 登录后，在 Profile/Tokens 创建一个新 token。
 ```bash
 npm login
 npm token create
