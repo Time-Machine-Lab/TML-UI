@@ -28,6 +28,13 @@ export default defineConfig({
           items: [
             { text: 'Button 按钮', link: '/components/button' }
           ]
+        },
+        {
+          text: '布局组件',
+          items: [
+            { text: 'Grid 栅格', link: '/components/grid' },
+            { text: 'Waterfall 瀑布流', link: '/components/waterfall' }
+          ]
         }
       ]
     },
