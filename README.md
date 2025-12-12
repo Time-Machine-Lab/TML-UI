@@ -58,7 +58,7 @@ import 'tml-ui/dist/style.css'
 
 ## 📖 文档
 
-访问 [在线文档](https://yourusername.github.io/tml-ui/) 查看完整的组件文档和示例。
+访问 [在线文档](https://time-machine-lab.github.io/TML-UI/) 查看完整的组件文档和示例。
 
 ## 📦 组件列表
 

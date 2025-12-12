@@ -1,3 +1,9 @@
+/*
+ * @Author: Dhx
+ * @Date: 2025-12-08 14:10:43
+ * @Description: 
+ * @FilePath: \TmlUI\docs\.vitepress\config.ts
+ */
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
@@ -49,7 +55,7 @@ export default defineConfig({
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/yourusername/tml-ui' }
+      { icon: 'github', link: 'https://github.com/Time-Machine-Lab/TML-UI' }
     ],
 
     footer: {
