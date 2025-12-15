@@ -35,11 +35,7 @@ function emitEvent(el: HTMLElement, eventName: string, detail: any) {
 /**
  * 处理文件选择变化
  */
-function handleFileChange(
-  el: HTMLElement,
-  input: HTMLInputElement,
-  options: UploadOptions
-) {
+function handleFileChange(el: HTMLElement, input: HTMLInputElement, options: UploadOptions) {
   return (event: Event) => {
     const files = input.files
     if (!files || files.length === 0) {
@@ -53,11 +49,11 @@ function handleFileChange(
       // 验证失败：先触发错误事件，再阻止原始事件传播
       // 触发错误事件
       emitEvent(el, 'upload-error', error as UploadErrorEventDetail)
-      
+
       // 阻止事件传播并取消默认行为
       event.stopPropagation()
       event.preventDefault()
-      
+
       // 清空 input value，允许重新选择相同文件
       input.value = ''
     } else {
@@ -86,7 +82,7 @@ function findFileInput(el: HTMLElement): HTMLInputElement | null {
 function bindToInput(el: HTMLElement, input: HTMLInputElement, state: UploadDirectiveState) {
   const handler = handleFileChange(el, input, state.options)
   state.changeHandler = handler
-  
+
   // 绑定事件处理器
   input.addEventListener('change', handler)
 }
@@ -98,7 +94,7 @@ function createHiddenInput(el: HTMLElement, state: UploadDirectiveState): HTMLIn
   const input = document.createElement('input')
   input.type = 'file'
   input.style.display = 'none'
-  
+
   // 设置属性
   if (state.options.accept && state.options.accept.length > 0) {
     input.accept = state.options.accept.join(',')
@@ -215,7 +211,7 @@ export const vUpload: Directive<HTMLElement, number | UploadOptions> = {
     if (state) {
       const newOptions = parseUploadOptions(binding.value)
       const oldOptions = state.options
-      
+
       // 比较配置是否变化
       if (JSON.stringify(newOptions) !== JSON.stringify(oldOptions)) {
         cleanupUploadDirective(el)

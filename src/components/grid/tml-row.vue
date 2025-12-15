@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="tml-row"
-    :style="rowStyle"
-  >
+  <div class="tml-row" :style="rowStyle">
     <slot />
   </div>
 </template>
@@ -48,7 +45,7 @@ provide('rowGutter', {
 // 计算行样式
 const rowStyle = computed(() => {
   const style: Record<string, string> = {}
-  
+
   // 设置对齐方式
   const justifyMap = {
     start: 'flex-start',
@@ -59,7 +56,7 @@ const rowStyle = computed(() => {
     'space-evenly': 'space-evenly'
   }
   style.justifyContent = justifyMap[props.justify]
-  
+
   const alignMap = {
     top: 'flex-start',
     middle: 'center',
@@ -67,21 +64,21 @@ const rowStyle = computed(() => {
     stretch: 'stretch'
   }
   style.alignItems = alignMap[props.align]
-  
+
   // 设置换行
   style.flexWrap = props.wrap ? 'wrap' : 'nowrap'
-  
+
   // 设置负 margin 来抵消列的 padding
   if (horizontalGutter.value) {
     style.marginLeft = `-${horizontalGutter.value / 2}px`
     style.marginRight = `-${horizontalGutter.value / 2}px`
   }
-  
+
   if (verticalGutter.value) {
     style.marginTop = `-${verticalGutter.value / 2}px`
     style.marginBottom = `-${verticalGutter.value / 2}px`
   }
-  
+
   return style
 })
 </script>

@@ -5,7 +5,15 @@
 </template>
 
 <script setup lang="ts">
-import { defineEmits, defineExpose, defineProps, onMounted, onUnmounted, ref, withDefaults } from 'vue'
+import {
+  defineEmits,
+  defineExpose,
+  defineProps,
+  onMounted,
+  onUnmounted,
+  ref,
+  withDefaults
+} from 'vue'
 
 /**
  * TmlWaterfall 组件属性定义
@@ -34,7 +42,7 @@ const props = withDefaults(defineProps<Props>(), {
   minItemWidth: 160,
   observeMutations: true,
   observeResizes: true,
-  triggerDistance: 200,
+  triggerDistance: 200
 })
 
 /**
@@ -73,8 +81,14 @@ let pendingStart: number | null = null
  */
 function computeColumns(): number {
   const cw = containerRef.value?.clientWidth || 0
-  const desired = props.columns && props.columns > 0 ? props.columns : Math.max(1, Math.floor(cw / (props.maxItemWidth || 320)))
-  const maxByMin = Math.max(1, Math.floor((cw + props.gap) / ((props.minItemWidth || 160) + props.gap)))
+  const desired =
+    props.columns && props.columns > 0
+      ? props.columns
+      : Math.max(1, Math.floor(cw / (props.maxItemWidth || 320)))
+  const maxByMin = Math.max(
+    1,
+    Math.floor((cw + props.gap) / ((props.minItemWidth || 160) + props.gap))
+  )
   const usable = Math.max(1, Math.min(desired, maxByMin))
   colCount.value = usable
   const width = Math.floor((cw - props.gap * (usable - 1)) / usable)
@@ -123,7 +137,7 @@ function doLayout(start: number): void {
   try {
     const width = computeColumns()
     const cols: number[] = Array.from({ length: colCount.value }, () => 0)
-    
+
     // 恢复起始位置之前的列高度
     for (let i = 0; i < start; i++) {
       const elPrev = itemsOrder.value[i]!
@@ -131,13 +145,13 @@ function doLayout(start: number): void {
       if (!meta) continue
       cols[meta.col] = Math.max(cols[meta.col] ?? 0, meta.top + meta.height + props.gap)
     }
-    
+
     // 从起始位置开始布局
     for (let i = Math.max(0, start); i < itemsOrder.value.length; i++) {
       const el = itemsOrder.value[i]!
       ensureStyles(el, width)
       const h = el.offsetHeight
-      
+
       // 找到高度最小的列
       let targetCol = 0
       let min = cols[0] ?? 0
@@ -148,7 +162,7 @@ function doLayout(start: number): void {
           targetCol = c
         }
       }
-      
+
       // 使用 transform 定位元素（性能优化）
       const left = targetCol * (width + props.gap)
       const top = cols[targetCol] ?? 0
@@ -156,7 +170,7 @@ function doLayout(start: number): void {
       itemMeta.set(el, { col: targetCol, top, height: h })
       cols[targetCol] = top + h + props.gap
     }
-    
+
     // 设置容器高度
     const height = Math.max(0, cols.reduce((m, v) => Math.max(m, v), 0) - props.gap)
     containerRef.value.style.position = 'relative'
@@ -207,7 +221,7 @@ function startObserving(): void {
       }
     })
   }
-  
+
   // 监听子元素增删
   if (props.observeMutations) {
     mutationObserver = new MutationObserver((mutations) => {
@@ -240,13 +254,13 @@ function startObserving(): void {
       if (changed) layoutFrom(start === itemsOrder.value.length ? 0 : start)
     })
   }
-  
+
   // 监听所有子元素
   for (const el of itemsOrder.value) resizeObserver?.observe(el)
   if (mutationObserver && containerRef.value) {
     mutationObserver.observe(containerRef.value, { childList: true })
   }
-  
+
   // 监听容器尺寸变化（响应式布局）
   containerResizeObserver = new ResizeObserver(() => {
     if (!containerRef.value) return
@@ -296,7 +310,10 @@ function onScroll(): void {
  * @param wait 节流等待时间（ms）
  * @returns 节流后的函数
  */
-function throttle<T extends (...args: any[]) => any>(func: T, wait: number): (...args: Parameters<T>) => void {
+function throttle<T extends (...args: any[]) => any>(
+  func: T,
+  wait: number
+): (...args: Parameters<T>) => void {
   let inThrottle = false
   return function (this: any, ...args: Parameters<T>) {
     if (!inThrottle) {
@@ -327,8 +344,6 @@ onUnmounted(() => {
 })
 
 defineExpose({ checkBottom })
-
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

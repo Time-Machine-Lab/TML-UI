@@ -55,7 +55,7 @@ export function matchMimeType(fileType: string, acceptType: string): boolean {
  * @returns 验证结果，成功返回 null，失败返回错误对象
  */
 export function validateFileType(file: File, accept: string[]): UploadError | null {
-  const isAccepted = accept.some(acceptType => matchMimeType(file.type, acceptType))
+  const isAccepted = accept.some((acceptType) => matchMimeType(file.type, acceptType))
 
   if (!isAccepted) {
     return {
@@ -74,7 +74,10 @@ export function validateFileType(file: File, accept: string[]): UploadError | nu
  * @param options 上传配置选项
  * @returns 验证结果，成功返回 null，失败返回第一个错误对象
  */
-export function validateFiles(files: FileList | File[], options: UploadOptions): UploadError | null {
+export function validateFiles(
+  files: FileList | File[],
+  options: UploadOptions
+): UploadError | null {
   const fileArray = Array.from(files)
 
   // 验证文件数量

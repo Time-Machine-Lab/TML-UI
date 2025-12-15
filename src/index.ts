@@ -19,7 +19,7 @@ const install = (app: App): void => {
   components.forEach((component) => {
     app.component(component.name || 'TmlButton', component)
   })
-  
+
   // 注册指令
   Object.entries(directives).forEach(([name, directive]) => {
     app.directive(name, directive)

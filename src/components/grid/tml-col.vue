@@ -1,8 +1,5 @@
 <template>
-  <div
-    :class="colClasses"
-    :style="colStyle"
-  >
+  <div :class="colClasses" :style="colStyle">
     <slot />
   </div>
 </template>
@@ -47,7 +44,7 @@ const parseConfig = (config: number | ColConfig | undefined): ColConfig => {
 // 生成类名
 const colClasses = computed(() => {
   const classes: string[] = ['tml-col']
-  
+
   // 基础类名
   if (props.span !== undefined) {
     if (props.span === 0) {
@@ -56,24 +53,24 @@ const colClasses = computed(() => {
       classes.push(`tml-col-${props.span}`)
     }
   }
-  
+
   if (props.offset) {
     classes.push(`tml-col-offset-${props.offset}`)
   }
-  
+
   if (props.push) {
     classes.push(`tml-col-push-${props.push}`)
   }
-  
+
   if (props.pull) {
     classes.push(`tml-col-pull-${props.pull}`)
   }
-  
+
   // 响应式类名
   const breakpoints = ['sm', 'md', 'lg', 'xl', 'xxl'] as const
   breakpoints.forEach((bp) => {
     const config = parseConfig(props[bp])
-    
+
     if (config.span !== undefined) {
       if (config.span === 0) {
         classes.push(`tml-col-${bp}-0`)
@@ -81,38 +78,38 @@ const colClasses = computed(() => {
         classes.push(`tml-col-${bp}-${config.span}`)
       }
     }
-    
+
     if (config.offset) {
       classes.push(`tml-col-${bp}-offset-${config.offset}`)
     }
-    
+
     if (config.push) {
       classes.push(`tml-col-${bp}-push-${config.push}`)
     }
-    
+
     if (config.pull) {
       classes.push(`tml-col-${bp}-pull-${config.pull}`)
     }
   })
-  
+
   return classes
 })
 
 // 计算列样式
 const colStyle = computed(() => {
   const style: Record<string, string> = {}
-  
+
   // 设置 gutter padding
   if (rowGutter.horizontal) {
     style.paddingLeft = `${rowGutter.horizontal / 2}px`
     style.paddingRight = `${rowGutter.horizontal / 2}px`
   }
-  
+
   if (rowGutter.vertical) {
     style.paddingTop = `${rowGutter.vertical / 2}px`
     style.paddingBottom = `${rowGutter.vertical / 2}px`
   }
-  
+
   return style
 })
 </script>

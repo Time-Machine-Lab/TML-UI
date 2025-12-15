@@ -43,19 +43,19 @@
       }
     }
   }
-  
+
   @for $i from 0 through 23 {
     .tml-col-sm-offset-#{$i} {
       margin-left: calc(100% / 24 * #{$i});
     }
   }
-  
+
   @for $i from 0 through 23 {
     .tml-col-sm-push-#{$i} {
       left: calc(100% / 24 * #{$i});
     }
   }
-  
+
   @for $i from 0 through 23 {
     .tml-col-sm-pull-#{$i} {
       right: calc(100% / 24 * #{$i});
@@ -76,19 +76,19 @@
       }
     }
   }
-  
+
   @for $i from 0 through 23 {
     .tml-col-md-offset-#{$i} {
       margin-left: calc(100% / 24 * #{$i});
     }
   }
-  
+
   @for $i from 0 through 23 {
     .tml-col-md-push-#{$i} {
       left: calc(100% / 24 * #{$i});
     }
   }
-  
+
   @for $i from 0 through 23 {
     .tml-col-md-pull-#{$i} {
       right: calc(100% / 24 * #{$i});
@@ -109,19 +109,19 @@
       }
     }
   }
-  
+
   @for $i from 0 through 23 {
     .tml-col-lg-offset-#{$i} {
       margin-left: calc(100% / 24 * #{$i});
     }
   }
-  
+
   @for $i from 0 through 23 {
     .tml-col-lg-push-#{$i} {
       left: calc(100% / 24 * #{$i});
     }
   }
-  
+
   @for $i from 0 through 23 {
     .tml-col-lg-pull-#{$i} {
       right: calc(100% / 24 * #{$i});
@@ -142,19 +142,19 @@
       }
     }
   }
-  
+
   @for $i from 0 through 23 {
     .tml-col-xl-offset-#{$i} {
       margin-left: calc(100% / 24 * #{$i});
     }
   }
-  
+
   @for $i from 0 through 23 {
     .tml-col-xl-push-#{$i} {
       left: calc(100% / 24 * #{$i});
     }
   }
-  
+
   @for $i from 0 through 23 {
     .tml-col-xl-pull-#{$i} {
       right: calc(100% / 24 * #{$i});
@@ -175,19 +175,19 @@
       }
     }
   }
-  
+
   @for $i from 0 through 23 {
     .tml-col-xxl-offset-#{$i} {
       margin-left: calc(100% / 24 * #{$i});
     }
   }
-  
+
   @for $i from 0 through 23 {
     .tml-col-xxl-push-#{$i} {
       left: calc(100% / 24 * #{$i});
     }
   }
-  
+
   @for $i from 0 through 23 {
     .tml-col-xxl-pull-#{$i} {
       right: calc(100% / 24 * #{$i});

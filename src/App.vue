@@ -110,29 +110,27 @@
           <p v-if="clickCount > 0" class="click-info">已点击 {{ clickCount }} 次</p>
         </div>
       </section>
-      
+
       <section class="demo-section">
         <h2>v-upload 指令演示</h2>
 
         <div class="demo-group">
           <h3>基础图片上传</h3>
-          <input 
-            type="file" 
+          <input
+            type="file"
             v-upload="{ maxSize: 5120, accept: ['image/*'] }"
             @upload-success="handleImageUpload"
             @upload-error="showUploadError"
             class="file-input"
           />
           <p v-if="uploadError" class="upload-error">{{ uploadError }}</p>
-          <p v-if="uploadedFileName" class="upload-success">
-            已选择: {{ uploadedFileName }}
-          </p>
+          <p v-if="uploadedFileName" class="upload-success">已选择: {{ uploadedFileName }}</p>
         </div>
 
         <div class="demo-group">
           <h3>多文件上传</h3>
-          <input 
-            type="file" 
+          <input
+            type="file"
             multiple
             v-upload="{
               maxSize: 10240,
@@ -154,7 +152,7 @@
 
         <div class="demo-group">
           <h3>编程式上传（按钮触发）</h3>
-          <tml-button 
+          <tml-button
             type="primary"
             v-upload="{
               maxSize: 20480,
@@ -168,12 +166,10 @@
             📹 选择视频文件
           </tml-button>
           <p v-if="uploadError" class="upload-error">{{ uploadError }}</p>
-          <p v-if="videoCount > 0" class="upload-success">
-            已选择 {{ videoCount }} 个视频文件
-          </p>
+          <p v-if="videoCount > 0" class="upload-success">已选择 {{ videoCount }} 个视频文件</p>
         </div>
       </section>
-      
+
       <section class="demo-section">
         <h2>瀑布流演示</h2>
 
@@ -185,7 +181,7 @@
             <tml-button @click="resetItems">重置</tml-button>
             <span class="item-count">当前项目数: {{ waterfallItems.length }}</span>
           </div>
-          
+
           <TmlWaterfall
             :columns="5"
             :gap="16"
@@ -206,40 +202,36 @@
             </div>
           </TmlWaterfall>
 
-          <div v-if="isLoadingMore" class="loading-indicator">
-            加载更多中...
-          </div>
+          <div v-if="isLoadingMore" class="loading-indicator">加载更多中...</div>
         </div>
 
         <div class="demo-group">
           <h3>响应式列数</h3>
           <p class="description">调整浏览器窗口大小，观察列数自动变化</p>
           <div class="waterfall-controls">
-            <label>列数: 
-              <input 
-                v-model.number="responsiveColumns" 
-                type="number" 
-                min="1" 
-                max="10" 
+            <label
+              >列数:
+              <input
+                v-model.number="responsiveColumns"
+                type="number"
+                min="1"
+                max="10"
                 class="column-input"
               />
             </label>
-            <label>间距: 
-              <input 
-                v-model.number="responsiveGap" 
-                type="number" 
-                min="0" 
-                max="100" 
+            <label
+              >间距:
+              <input
+                v-model.number="responsiveGap"
+                type="number"
+                min="0"
+                max="100"
                 class="column-input"
               />
             </label>
           </div>
 
-          <TmlWaterfall
-            :columns="responsiveColumns"
-            :gap="responsiveGap"
-            :observe-resizes="true"
-          >
+          <TmlWaterfall :columns="responsiveColumns" :gap="responsiveGap" :observe-resizes="true">
             <div
               v-for="item in fixedItems"
               :key="item.id"
@@ -282,9 +274,21 @@ interface WaterfallItem {
 }
 
 const colors = [
-  '#409EFF', '#67C23A', '#E6A23C', '#F56C6C', '#909399',
-  '#53a8ff', '#85ce61', '#ebb563', '#f78989', '#a6a9ad',
-  '#3a8ee6', '#5daf34', '#cf9236', '#dd6161', '#73767a'
+  '#409EFF',
+  '#67C23A',
+  '#E6A23C',
+  '#F56C6C',
+  '#909399',
+  '#53a8ff',
+  '#85ce61',
+  '#ebb563',
+  '#f78989',
+  '#a6a9ad',
+  '#3a8ee6',
+  '#5daf34',
+  '#cf9236',
+  '#dd6161',
+  '#73767a'
 ]
 
 let itemIdCounter = 0
@@ -502,7 +506,9 @@ const showUploadError = (event: CustomEvent) => {
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
   cursor: pointer;
 }
 
