@@ -64,3 +64,4 @@ export default {
 - 若 key 不存在于规则中：默认视为不处理（保持原样），避免误伤。
 - 指令需在 `mounted` / `updated` 时重算并正确“恢复原始状态”。
 - 默认替换标识属性名为 `data-permission-replace`。
+- `disable` 策略需要体现“不可操作”视觉反馈（`cursor: not-allowed`），并阻止点击默认行为与事件传播，避免触发元素自身或父级的 `@click`。

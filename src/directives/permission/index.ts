@@ -26,9 +26,11 @@ interface PermissionDirectiveState {
 
   originalDisplay?: string
 
-  originalPointerEvents?: string
+  originalCursor?: string
   originalAriaDisabled?: string | null
   originalDisabled?: boolean
+
+  clickHandler?: (event: MouseEvent) => void
 
   replacedTextMap?: Map<HTMLElement, string>
 }
@@ -138,8 +140,13 @@ function isDisableableFormControl(
 }
 
 function restoreDisable(el: HTMLElement, state: PermissionDirectiveState) {
-  if (state.originalPointerEvents !== undefined) {
-    el.style.pointerEvents = state.originalPointerEvents
+  if (state.originalCursor !== undefined) {
+    el.style.cursor = state.originalCursor
+  }
+
+  if (state.clickHandler) {
+    el.removeEventListener('click', state.clickHandler)
+    state.clickHandler = undefined
   }
 
   if (state.originalAriaDisabled === undefined) {
@@ -156,8 +163,8 @@ function restoreDisable(el: HTMLElement, state: PermissionDirectiveState) {
 }
 
 function applyDisable(el: HTMLElement, state: PermissionDirectiveState) {
-  if (state.originalPointerEvents === undefined) {
-    state.originalPointerEvents = el.style.pointerEvents
+  if (state.originalCursor === undefined) {
+    state.originalCursor = el.style.cursor
   }
   if (state.originalAriaDisabled === undefined) {
     state.originalAriaDisabled = el.getAttribute('aria-disabled')
@@ -167,8 +174,17 @@ function applyDisable(el: HTMLElement, state: PermissionDirectiveState) {
     state.originalDisabled = el.disabled
   }
 
-  el.style.pointerEvents = 'none'
+  el.style.cursor = 'not-allowed'
   el.setAttribute('aria-disabled', 'true')
+
+  if (!state.clickHandler) {
+    state.clickHandler = (event: MouseEvent) => {
+      event.preventDefault()
+      event.stopPropagation()
+      event.stopImmediatePropagation()
+    }
+    el.addEventListener('click', state.clickHandler)
+  }
 
   if (isDisableableFormControl(el)) {
     el.disabled = true
@@ -281,6 +297,11 @@ export function createPermissionDirective<Level extends PermissionLevel = string
   options: CreatePermissionDirectiveOptions<Level>
 ): Directive<HTMLElement, string> {
   return {
+    created(el, binding) {
+      // 尽早注册 disable 的 click 阻断，避免同元素上的 @click 先于指令监听触发
+      computeAndApply(el, binding, options)
+    },
+
     mounted(el, binding) {
       computeAndApply(el, binding, options)
     },

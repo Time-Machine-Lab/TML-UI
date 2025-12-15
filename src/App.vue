@@ -6,7 +6,7 @@
     </header>
 
     <main class="main-content">
-      <section class="demo-section">
+      <section class="demo-section" v-if="false">
         <h2>Grid 栅格布局演示</h2>
 
         <div class="demo-group">
@@ -62,7 +62,7 @@
         </div>
       </section>
 
-      <section class="demo-section">
+      <section class="demo-section" v-if="false">
         <h2>Button 组件演示</h2>
 
         <div class="demo-group">
@@ -111,7 +111,7 @@
         </div>
       </section>
 
-      <section class="demo-section">
+      <section class="demo-section" v-if="false">
         <h2>v-upload 指令演示</h2>
 
         <div class="demo-group">
@@ -171,6 +171,72 @@
       </section>
 
       <section class="demo-section">
+        <h2>v-permission 指令演示</h2>
+
+        <div class="demo-group">
+          <h3>权限状态切换</h3>
+          <p class="description">
+            通过下面的开关模拟“当前用户权限 / 权限等级”，并观察元素的隐藏、禁用与内容替换效果。
+          </p>
+
+          <div class="permission-controls">
+            <div class="permission-control">
+              <span class="permission-label">order.create:</span>
+              <tml-button
+                :type="hasPermissionKey('order.create') ? 'success' : 'warning'"
+                @click="togglePermissionKey('order.create')"
+              >
+                {{ hasPermissionKey('order.create') ? '已授权' : '未授权' }}
+              </tml-button>
+              <span class="permission-hint">（whenDenied: hide）</span>
+            </div>
+
+            <div class="permission-control">
+              <span class="permission-label">order.delete:</span>
+              <tml-button
+                :type="hasPermissionKey('order.delete') ? 'success' : 'warning'"
+                @click="togglePermissionKey('order.delete')"
+              >
+                {{ hasPermissionKey('order.delete') ? '已授权' : '未授权' }}
+              </tml-button>
+              <span class="permission-hint">（whenDenied: disable）</span>
+            </div>
+
+            <div class="permission-control">
+              <span class="permission-label">product.price level:</span>
+              <select v-model="pricePermissionLevel" class="column-input">
+                <option value="none">none</option>
+                <option value="masked">masked</option>
+                <option value="full">full</option>
+              </select>
+              <span class="permission-hint">（byLevel: replace/allow）</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-group">
+          <h3>效果预览</h3>
+
+          <div class="button-row">
+            <tml-button type="primary" v-permission="'order.create'">创建订单（无权限隐藏）</tml-button>
+            <tml-button type="danger" v-permission="'order.delete'">删除订单（无权限禁用）</tml-button>
+          </div>
+
+          <div class="permission-card" v-permission="'product.price'">
+            <p class="permission-row">
+              <span class="permission-label">商品:</span>
+              <span>示例商品</span>
+            </p>
+            <p class="permission-row">
+              <span class="permission-label">价格:</span>
+              <span data-permission-replace>{{ productPriceText }}</span>
+              <span class="permission-hint">（仅替换带 data-permission-replace 的文本）</span>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="demo-section" v-if="false">
         <h2>瀑布流演示</h2>
 
         <div class="demo-group">
@@ -258,6 +324,7 @@ import { ref } from 'vue'
 import TmlButton from './components/button/tml-button.vue'
 import { TmlRow, TmlCol } from './components/grid'
 import { TmlWaterfall } from './components/list/waterfall'
+import { createPermissionDirective } from './directives/permission'
 
 const clickCount = ref(0)
 
@@ -380,6 +447,53 @@ const showUploadError = (event: CustomEvent) => {
   uploadedFiles.value = []
   videoCount.value = 0
 }
+
+// v-permission 指令演示
+type PricePermissionLevel = 'none' | 'masked' | 'full'
+
+const grantedPermissionKeys = ref<string[]>(['order.create', 'order.delete'])
+const pricePermissionLevel = ref<PricePermissionLevel>('none')
+const productPriceText = ref('¥ 199.00')
+
+const hasPermissionKey = (key: string) => grantedPermissionKeys.value.includes(key)
+
+const togglePermissionKey = (key: string) => {
+  if (hasPermissionKey(key)) {
+    grantedPermissionKeys.value = grantedPermissionKeys.value.filter((k) => k !== key)
+    return
+  }
+
+  grantedPermissionKeys.value = [...grantedPermissionKeys.value, key]
+}
+
+const vPermission = createPermissionDirective<PricePermissionLevel>({
+  rules: {
+    'order.create': {
+      byLevel: {
+        none: { mode: 'hide' },
+        masked: { mode: 'disable' },
+        full: { mode: 'allow' }
+      }
+    },
+    'order.delete': {
+      byLevel: {
+        none: { mode: 'disable' },
+        masked: { mode: 'disable' },
+        full: { mode: 'allow' }
+      }
+    },
+    'product.price': {
+      byLevel: {
+        none: { mode: 'replace', replaceText: '***' },
+        masked: { mode: 'replace', replaceText: '**.**' },
+        full: { mode: 'allow' }
+      }
+    }
+  },
+    resolvePermission: (_key) => {
+    return pricePermissionLevel.value
+  }
+})
 </script>
 
 <style scoped>
@@ -595,5 +709,48 @@ const showUploadError = (event: CustomEvent) => {
   margin: 6px 0;
   color: var(--tml-text-color-regular);
   font-size: 14px;
+}
+
+/* v-permission 指令演示样式 */
+.permission-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  padding: 16px;
+  background: var(--tml-bg-color-page);
+  border-radius: 8px;
+}
+
+.permission-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.permission-label {
+  font-weight: 600;
+  color: var(--tml-text-color-regular);
+}
+
+.permission-hint {
+  font-size: 12px;
+  color: var(--tml-text-color-secondary);
+}
+
+.permission-card {
+  margin-top: 16px;
+  padding: 16px;
+  border: 1px solid var(--tml-border-color-light);
+  border-radius: 8px;
+  background: var(--tml-bg-color-page);
+}
+
+.permission-row {
+  margin: 8px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
 }
 </style>

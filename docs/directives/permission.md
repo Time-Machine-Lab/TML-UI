@@ -126,10 +126,29 @@ createPermissionDirective({
 })
 ```
 
+`byLevel` 下除了 `replace`，也可以按等级配置 `hide/disable`（常用于：无权限直接隐藏；有部分权限但不允许操作时禁用）：
+
+```ts
+createPermissionDirective({
+  rules: {
+    'order.submit': {
+      byLevel: {
+        none: { mode: 'hide' },
+        readonly: { mode: 'disable' },
+        full: { mode: 'allow' }
+      }
+    }
+  },
+  resolvePermission: (key) => {
+    return 'readonly'
+  }
+})
+```
+
 ## 行为说明
 
 - `hide`：设置宿主元素 `display: none`
-- `disable`：保持可见但不可交互（`pointer-events: none` + `aria-disabled="true"`；对可禁用表单控件会设置 `disabled=true`）
+- `disable`：保持可见但不可交互（`cursor: not-allowed` + `aria-disabled="true"`；并在捕获阶段拦截 `click` 事件以阻止默认行为与事件传播；对可禁用表单控件会设置 `disabled=true`）
 - `replace`：仅对宿主元素内部带标识属性的子元素设置 `textContent`
 - `allow`：不处理并恢复原始状态
 

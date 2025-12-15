@@ -35,6 +35,8 @@
 - **GIVEN** 某 key 的规则 mode 为 disable
 - **WHEN** 当前用户不具备该 key 权限
 - **THEN** 指令 SHALL 禁用目标元素（保持可见但不可交互）
+- **AND** 指令 SHALL 为目标元素设置 `cursor: not-allowed`
+- **AND** 指令 SHALL 阻止点击事件的默认行为与事件传播（避免触发元素自身或父级点击处理）
 
 #### Scenario: Replace mode only affects marked descendants
 - **GIVEN** 某 key 的规则 mode 为 replace
