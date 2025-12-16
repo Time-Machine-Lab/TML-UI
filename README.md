@@ -27,6 +27,21 @@ yarn add tml-ui
 pnpm add tml-ui
 ```
 
+### 使用自建源安装
+
+本项目会发布到自建源：`https://gaq0noe1.cn-nb1.rainapp.top/`。
+
+```bash
+# npm
+npm install tml-ui --registry=https://gaq0noe1.cn-nb1.rainapp.top/
+
+# yarn
+yarn add tml-ui --registry=https://gaq0noe1.cn-nb1.rainapp.top/
+
+# pnpm
+pnpm add tml-ui --registry=https://gaq0noe1.cn-nb1.rainapp.top/
+```
+
 ## 🔨 使用
 
 ### 完整引入

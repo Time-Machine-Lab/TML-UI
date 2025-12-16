@@ -4,18 +4,36 @@
 
 ## 安装
 
+::: tip 使用自建源安装
+本项目会发布到自建源：`https://gaq0noe1.cn-nb1.rainapp.top/`。
+
+如果你的环境需要从自建源安装，可以在安装命令中指定 `--registry`：
+:::
+
 ::: code-group
 
 ```bash [npm]
 npm install tml-ui
 ```
 
+```bash [npm（自建源）]
+npm install tml-ui --registry=https://gaq0noe1.cn-nb1.rainapp.top/
+```
+
 ```bash [yarn]
 yarn add tml-ui
 ```
 
+```bash [yarn（自建源）]
+yarn add tml-ui --registry=https://gaq0noe1.cn-nb1.rainapp.top/
+```
+
 ```bash [pnpm]
 pnpm add tml-ui
+```
+
+```bash [pnpm（自建源）]
+pnpm add tml-ui --registry=https://gaq0noe1.cn-nb1.rainapp.top/
 ```
 
 :::
