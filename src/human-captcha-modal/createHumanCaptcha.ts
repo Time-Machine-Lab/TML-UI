@@ -23,7 +23,7 @@ const defaults = {
   },
   size: {
     widthPx: 360,
-    heightPx: 220
+    heightPx: 200
   },
   antiAutomation: {
     minSolveTimeMs: 700,
@@ -152,7 +152,7 @@ export const createHumanCaptcha = (options: HumanCaptchaOptions = {}): HumanCapt
     messageCanvas.setAttribute('aria-hidden', 'true')
 
     const challengeMount = document.createElement('div')
-    challengeMount.style.cssText = 'margin-top:auto;display:flex;justify-content:center;'
+    challengeMount.style.cssText = 'display:flex;justify-content:center;'
 
     const button = document.createElement('button')
     button.type = 'button'
