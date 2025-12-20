@@ -60,11 +60,11 @@ jobs:
           body: |
             ## 🎉 Release ${{ github.ref_name }}
             
-            Published to NPM: [${{ secrets.NPM_REGISTRY_URL || 'https://registry.npmjs.org/' }}](https://www.npmjs.com/package/tml-ui)
+            Published to NPM: [${{ secrets.NPM_REGISTRY_URL || 'https://registry.npmjs.org/' }}](https://www.npmjs.com/package/@tml/tml-ui)
             
             ### Installation
             ```bash
-            npm install tml-ui@${{ steps.set-version.outputs.version }}
+            npm install @tml/tml-ui@${{ steps.set-version.outputs.version }}
             ```
           draft: false
           prerelease: ${{ contains(github.ref_name, 'alpha') || contains(github.ref_name, 'beta') || contains(github.ref_name, 'rc') }}

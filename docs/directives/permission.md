@@ -15,7 +15,7 @@
 ```ts
 import { createApp } from 'vue'
 import App from './App.vue'
-import { createPermissionDirective } from 'tml-ui'
+import { createPermissionDirective } from '@tml/tml-ui'
 
 function hasPermission(key: string): boolean {
   return key === 'order.submit'
@@ -48,7 +48,7 @@ app.mount('#app')
 
 ```ts
 import { defineComponent } from 'vue'
-import { createPermissionDirective } from 'tml-ui'
+import { createPermissionDirective } from '@tml/tml-ui'
 
 export default defineComponent({
   directives: {
@@ -80,7 +80,7 @@ export default defineComponent({
 规则配置示例：
 
 ```ts
-import { createPermissionDirective } from 'tml-ui'
+import { createPermissionDirective } from '@tml/tml-ui'
 
 export const vPermission = createPermissionDirective({
   rules: {
@@ -157,7 +157,7 @@ createPermissionDirective({
 ### 导出
 
 ```ts
-import { createPermissionDirective, DEFAULT_PERMISSION_REPLACE_ATTR } from 'tml-ui'
+import { createPermissionDirective, DEFAULT_PERMISSION_REPLACE_ATTR } from '@tml/tml-ui'
 
 import type {
   CreatePermissionDirectiveOptions,
@@ -170,7 +170,7 @@ import type {
   PermissionReplaceOptions,
   ResolvePermission,
   ResolvePermissionResult
-} from 'tml-ui'
+} from '@tml/tml-ui'
 ```
 
 ### `createPermissionDirective`

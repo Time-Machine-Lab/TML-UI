@@ -150,7 +150,7 @@ export interface ButtonEmits {
 }
 
 // 组件实例类型
-import type { TmlButton } from 'tml-ui'
+import type { TmlButton } from '@tml/tml-ui'
 ```
 
 ### 在 TypeScript 中使用
@@ -158,8 +158,8 @@ import type { TmlButton } from 'tml-ui'
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import { TmlButton } from 'tml-ui'
-import type { ButtonProps } from 'tml-ui'
+import { TmlButton } from '@tml/tml-ui'
+import type { ButtonProps } from '@tml/tml-ui'
 
 // 使用类型定义
 const buttonProps: ButtonProps = {

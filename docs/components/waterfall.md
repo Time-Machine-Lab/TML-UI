@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import { TmlWaterfall } from 'tml-ui'
+import { TmlWaterfall } from '@tml/tml-ui'
 
 const items = [
   { id: 1, image: '/img1.jpg', title: '标题 1', description: '描述...' },
@@ -78,7 +78,7 @@ const items = [
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { TmlWaterfall } from 'tml-ui'
+import { TmlWaterfall } from '@tml/tml-ui'
 
 const items = ref([...Array(20).keys()].map(i => ({ id: i, content: `Item ${i}` })))
 const loading = ref(false)
@@ -122,7 +122,7 @@ const handleReachBottom = async ({ atBottom }: { atBottom: boolean }) => {
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { TmlWaterfall } from 'tml-ui'
+import { TmlWaterfall } from '@tml/tml-ui'
 
 const items = ref([
   { id: 1, content: 'Item 1', height: 150 },
@@ -216,7 +216,7 @@ export interface WaterfallEmits {
 }
 
 // 组件实例类型
-import type { TmlWaterfall } from 'tml-ui'
+import type { TmlWaterfall } from '@tml/tml-ui'
 ```
 
 ### 在 TypeScript 中使用
@@ -224,8 +224,8 @@ import type { TmlWaterfall } from 'tml-ui'
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import { TmlWaterfall } from 'tml-ui'
-import type { WaterfallProps, ReachBottomPayload } from 'tml-ui'
+import { TmlWaterfall } from '@tml/tml-ui'
+import type { WaterfallProps, ReachBottomPayload } from '@tml/tml-ui'
 
 // 定义组件配置
 const waterfallConfig: WaterfallProps = {
@@ -298,7 +298,7 @@ const loadMoreData = async (): Promise<void> => {
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { TmlWaterfall } from 'tml-ui'
+import { TmlWaterfall } from '@tml/tml-ui'
 
 const waterfallRef = ref()
 
@@ -335,7 +335,7 @@ const handleReachBottom = (payload) => {
 
 ```vue
 <script setup>
-import { TmlWaterfall } from 'tml-ui'
+import { TmlWaterfall } from '@tml/tml-ui'
 
 const images = ref([...])
 </script>
@@ -392,7 +392,7 @@ const images = ref([...])
 ```vue
 <script setup>
 import { ref } from 'vue'
-import { TmlWaterfall } from 'tml-ui'
+import { TmlWaterfall } from '@tml/tml-ui'
 
 const items = ref([])
 const loading = ref(false)
@@ -480,8 +480,8 @@ const handleReachBottom = async ({ atBottom }) => {
 ```vue
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { TmlWaterfall } from 'tml-ui'
-import type { ReachBottomPayload } from 'tml-ui'
+import { TmlWaterfall } from '@tml/tml-ui'
+import type { ReachBottomPayload } from '@tml/tml-ui'
 
 interface ImageItem {
   id: number

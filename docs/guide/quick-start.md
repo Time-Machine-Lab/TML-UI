@@ -13,27 +13,27 @@
 ::: code-group
 
 ```bash [npm]
-npm install tml-ui
+npm install @tml/tml-ui
 ```
 
 ```bash [npm（自建源）]
-npm install tml-ui --registry=https://gaq0noe1.cn-nb1.rainapp.top/
+npm install @tml/tml-ui --registry=https://gaq0noe1.cn-nb1.rainapp.top/
 ```
 
 ```bash [yarn]
-yarn add tml-ui
+yarn add @tml/tml-ui
 ```
 
 ```bash [yarn（自建源）]
-yarn add tml-ui --registry=https://gaq0noe1.cn-nb1.rainapp.top/
+yarn add @tml/tml-ui --registry=https://gaq0noe1.cn-nb1.rainapp.top/
 ```
 
 ```bash [pnpm]
-pnpm add tml-ui
+pnpm add @tml/tml-ui
 ```
 
 ```bash [pnpm（自建源）]
-pnpm add tml-ui --registry=https://gaq0noe1.cn-nb1.rainapp.top/
+pnpm add @tml/tml-ui --registry=https://gaq0noe1.cn-nb1.rainapp.top/
 ```
 
 :::
@@ -45,8 +45,8 @@ pnpm add tml-ui --registry=https://gaq0noe1.cn-nb1.rainapp.top/
 ```ts
 // main.ts
 import { createApp } from 'vue'
-import TmlUI from 'tml-ui'
-import 'tml-ui/dist/style.css'
+import TmlUI from '@tml/tml-ui'
+import '@tml/tml-ui/dist/style.css'
 import App from './App.vue'
 
 const app = createApp(App)
@@ -64,8 +64,8 @@ app.mount('#app')
 </template>
 
 <script setup>
-import { TmlButton } from 'tml-ui'
-import 'tml-ui/dist/style.css'
+import { TmlButton } from '@tml/tml-ui'
+import '@tml/tml-ui/dist/style.css'
 </script>
 ```
 

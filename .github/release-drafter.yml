@@ -56,7 +56,7 @@ template: |
   ## 📦 Installation
 
   ```bash
-  npm install tml-ui@$RESOLVED_VERSION
+  npm install @tml/tml-ui@$RESOLVED_VERSION
   ```
 
   ## 👥 Contributors
