@@ -1,5 +1,5 @@
 {
-  "name": "tml-ui",
+  "name": "@tml/tml-ui",
   "version": "0.0.0",
   "description": "A Vue 3 Component Library built with TypeScript",
   "type": "module",
@@ -58,5 +58,8 @@
     "typescript"
   ],
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
 }

@@ -1,7 +1,7 @@
 # TML UI
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![npm version](https://img.shields.io/npm/v/tml-ui.svg)](https://www.npmjs.com/package/tml-ui)
+[![npm version](https://img.shields.io/npm/v/%40tml%2Ftml-ui.svg)](https://www.npmjs.com/package/@tml/tml-ui)
 
 一个基于 Vue 3 + TypeScript 构建的现代化组件库。
 
@@ -18,13 +18,28 @@
 
 ```bash
 # npm
-npm install tml-ui
+npm install @tml/tml-ui
 
 # yarn
-yarn add tml-ui
+yarn add @tml/tml-ui
 
 # pnpm
-pnpm add tml-ui
+pnpm add @tml/tml-ui
+```
+
+### 使用自建源安装
+
+本项目会发布到自建源：`https://gaq0noe1.cn-nb1.rainapp.top/`。
+
+```bash
+# npm
+npm install @tml/tml-ui --registry=https://gaq0noe1.cn-nb1.rainapp.top/
+
+# yarn
+yarn add @tml/tml-ui --registry=https://gaq0noe1.cn-nb1.rainapp.top/
+
+# pnpm
+pnpm add @tml/tml-ui --registry=https://gaq0noe1.cn-nb1.rainapp.top/
 ```
 
 ## 🔨 使用
@@ -34,8 +49,8 @@ pnpm add tml-ui
 ```ts
 // main.ts
 import { createApp } from 'vue'
-import TmlUI from 'tml-ui'
-import 'tml-ui/dist/style.css'
+import TmlUI from '@tml/tml-ui'
+import '@tml/tml-ui/dist/style.css'
 import App from './App.vue'
 
 const app = createApp(App)
@@ -51,8 +66,8 @@ app.mount('#app')
 </template>
 
 <script setup>
-import { TmlButton } from 'tml-ui'
-import 'tml-ui/dist/style.css'
+import { TmlButton } from '@tml/tml-ui'
+import '@tml/tml-ui/dist/style.css'
 </script>
 ```
 

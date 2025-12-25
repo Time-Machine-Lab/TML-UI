@@ -364,15 +364,15 @@ export interface ColProps extends ColConfig {
 }
 
 // 组件实例类型
-import type { TmlRow, TmlCol } from 'tml-ui'
+import type { TmlRow, TmlCol } from '@tml/tml-ui'
 ```
 
 ### 在 TypeScript 中使用
 
 ```vue
 <script setup lang="ts">
-import { TmlRow, TmlCol } from 'tml-ui'
-import type { RowProps, ColProps } from 'tml-ui'
+import { TmlRow, TmlCol } from '@tml/tml-ui'
+import type { RowProps, ColProps } from '@tml/tml-ui'
 
 // 定义 Row 配置
 const rowConfig: RowProps = {

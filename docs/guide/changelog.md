@@ -71,7 +71,7 @@ TML-UI 遵循 [语义化版本](https://semver.org/lang/zh-CN/) 规范。
 
 1. 更新依赖：
 ```bash
-npm install tml-ui@latest
+npm install @tml/tml-ui@latest
 ```
 
 2. 主要变更：
