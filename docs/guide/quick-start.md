@@ -13,27 +13,27 @@
 ::: code-group
 
 ```bash [npm]
-npm install @tml/tml-ui
+npm install @time-machine-lab/tml-ui
 ```
 
 ```bash [npm（自建源）]
-npm install @tml/tml-ui --registry=https://gaq0noe1.cn-nb1.rainapp.top/
+npm install @time-machine-lab/tml-ui --registry=https://gaq0noe1.cn-nb1.rainapp.top/
 ```
 
 ```bash [yarn]
-yarn add @tml/tml-ui
+yarn add @time-machine-lab/tml-ui
 ```
 
 ```bash [yarn（自建源）]
-yarn add @tml/tml-ui --registry=https://gaq0noe1.cn-nb1.rainapp.top/
+yarn add @time-machine-lab/tml-ui --registry=https://gaq0noe1.cn-nb1.rainapp.top/
 ```
 
 ```bash [pnpm]
-pnpm add @tml/tml-ui
+pnpm add @time-machine-lab/tml-ui
 ```
 
 ```bash [pnpm（自建源）]
-pnpm add @tml/tml-ui --registry=https://gaq0noe1.cn-nb1.rainapp.top/
+pnpm add @time-machine-lab/tml-ui --registry=https://gaq0noe1.cn-nb1.rainapp.top/
 ```
 
 :::
@@ -45,8 +45,8 @@ pnpm add @tml/tml-ui --registry=https://gaq0noe1.cn-nb1.rainapp.top/
 ```ts
 // main.ts
 import { createApp } from 'vue'
-import TmlUI from '@tml/tml-ui'
-import '@tml/tml-ui/dist/style.css'
+import TmlUI from '@time-machine-lab/tml-ui'
+import '@time-machine-lab/tml-ui/dist/style.css'
 import App from './App.vue'
 
 const app = createApp(App)
@@ -64,8 +64,8 @@ app.mount('#app')
 </template>
 
 <script setup>
-import { TmlButton } from '@tml/tml-ui'
-import '@tml/tml-ui/dist/style.css'
+import { TmlButton } from '@time-machine-lab/tml-ui'
+import '@time-machine-lab/tml-ui/dist/style.css'
 </script>
 ```
 

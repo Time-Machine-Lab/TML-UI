@@ -600,14 +600,14 @@ import type {
   UploadErrorType,
   UploadSuccessEventDetail,
   UploadErrorEventDetail
-} from '@tml/tml-ui'
+} from '@time-machine-lab/tml-ui'
 ```
 
 ### 使用示例
 
 ```typescript
 import { ref } from 'vue'
-import type { UploadOptions, UploadError } from '@tml/tml-ui'
+import type { UploadOptions, UploadError } from '@time-machine-lab/tml-ui'
 
 // 定义上传配置
 const uploadOptions: UploadOptions = {

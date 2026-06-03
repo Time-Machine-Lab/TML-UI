@@ -1,7 +1,7 @@
 # TML UI
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![npm version](https://img.shields.io/npm/v/%40tml%2Ftml-ui.svg)](https://gaq0noe1.cn-nb1.rainapp.top/@tml/tml-ui)
+[![npm version](https://img.shields.io/npm/v/%40time-machine-lab%2Ftml-ui.svg)](https://gaq0noe1.cn-nb1.rainapp.top/@time-machine-lab/tml-ui)
 
 一个基于 Vue 3 + TypeScript 构建的现代化组件库。
 
@@ -18,13 +18,13 @@
 
 ```bash
 # npm
-npm install @tml/tml-ui
+npm install @time-machine-lab/tml-ui
 
 # yarn
-yarn add @tml/tml-ui
+yarn add @time-machine-lab/tml-ui
 
 # pnpm
-pnpm add @tml/tml-ui
+pnpm add @time-machine-lab/tml-ui
 ```
 
 ### 使用自建源安装
@@ -33,13 +33,13 @@ pnpm add @tml/tml-ui
 
 ```bash
 # npm
-npm install @tml/tml-ui --registry=https://gaq0noe1.cn-nb1.rainapp.top/
+npm install @time-machine-lab/tml-ui --registry=https://gaq0noe1.cn-nb1.rainapp.top/
 
 # yarn
-yarn add @tml/tml-ui --registry=https://gaq0noe1.cn-nb1.rainapp.top/
+yarn add @time-machine-lab/tml-ui --registry=https://gaq0noe1.cn-nb1.rainapp.top/
 
 # pnpm
-pnpm add @tml/tml-ui --registry=https://gaq0noe1.cn-nb1.rainapp.top/
+pnpm add @time-machine-lab/tml-ui --registry=https://gaq0noe1.cn-nb1.rainapp.top/
 ```
 
 ## 🔨 使用
@@ -49,8 +49,8 @@ pnpm add @tml/tml-ui --registry=https://gaq0noe1.cn-nb1.rainapp.top/
 ```ts
 // main.ts
 import { createApp } from 'vue'
-import TmlUI from '@tml/tml-ui'
-import '@tml/tml-ui/dist/style.css'
+import TmlUI from '@time-machine-lab/tml-ui'
+import '@time-machine-lab/tml-ui/dist/style.css'
 import App from './App.vue'
 
 const app = createApp(App)
@@ -66,8 +66,8 @@ app.mount('#app')
 </template>
 
 <script setup>
-import { TmlButton } from '@tml/tml-ui'
-import '@tml/tml-ui/dist/style.css'
+import { TmlButton } from '@time-machine-lab/tml-ui'
+import '@time-machine-lab/tml-ui/dist/style.css'
 </script>
 ```
 
